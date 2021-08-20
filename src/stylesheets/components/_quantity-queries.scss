@@ -1,0 +1,60 @@
+// Quantity Query
+
+// @include qq(min 3) { /* styling if the list has 3 or more items */ }
+// @include qq(from 3) { /* styling if the list has 3 or more items */ }
+// @include qq(at least 3) { /* styling if the list has 3 or more items */ }
+//
+// @include qq(max 5) { /* styling if the list has 5 or less items */ }
+// @include qq(max 5) { /* styling if the list has 5 or less items */ }
+// @include qq(at most 5) { /* styling if the list has 5 or less items */ }
+//
+// @include qq(equal 4) { /* styling if the list has exactly 4 items */ }
+// @include qq(exactly 4) { /* styling if the list has exactly 4 items */ }
+//
+// @include qq(min 3 max 5) { /* styling if the list has between 3 and 5 items */ }
+// @include qq(from 3 to 5) { /* styling if the list has between 3 and 5 items */ }
+// @include qq(at least 3 at most 5) { /* styling if the list has between 3 and 5 items */ }
+//
+// }
+@mixin qq($query) {
+  $equal: index-some($query, equal, exactly);
+  $min: index-some($query, min, least, from) or $equal;
+  $min: if($min, nth($query, $min + 1), null);
+  $max: index-some($query, max, most, to) or $equal;
+  $max: if($max, nth($query, $max + 1), null);
+  $list:();
+  $last: null;
+  // loop through selectors to find the last selector of each part
+  // the "alphabet" loop is just a simple way to listify selectors
+  // (if the selector has more than 26 parts – you're on your own)
+
+  @each $selector in & {
+    @each $a, $b, $c, $d, $e, $f, $g, $h, $i, $j, $k, $l, $m, $n, $o, $p, $q, $r, $s, $t, $u, $v, $w, $x, $y, $z in $selector {
+      $list: append($list, $a $b $c $d $e $f $g $h $i $j $k $l $m $n $o $p $q $r $s $t $u $v $w $x $y $z);
+    }
+    $last: nth($list, length($list));
+  }
+
+  @if $min and $max {
+    &:nth-last-of-type(n+#{$min}):nth-last-of-type(-n+#{$max}):first-of-type,
+    &:nth-last-of-type(n+#{$min}):nth-last-of-type(-n+#{$max}):first-of-type ~ #{$last} { @content; }
+  }
+
+  @else if $min {
+    &:nth-last-of-type(n+#{$min}),
+    &:nth-last-of-type(n+#{$min}) ~ #{$last} { @content; }
+  }
+
+  @else if $max {
+    &:nth-last-of-type(-n+#{$max}):first-of-type,
+    &:nth-last-of-type(-n+#{$max}):first-of-type ~ #{$last} { @content; }
+  }
+}
+
+// helper function to return the first found list index
+// of a number of values passed
+@function index-some($list, $values...) {
+  @each $value in $values { @if index($list, $value) { @return index($list, $value); } }
+
+  @return null;
+}

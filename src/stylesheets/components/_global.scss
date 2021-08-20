@@ -1,0 +1,90 @@
+@import "~magnific-popup/dist/magnific-popup.css";
+
+body {
+  &.body-fixed {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+%bv_hidden {
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+%filled_obj {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.img-object-fit {
+  display: block;
+  width: 100%;
+  height: 100%;
+
+  img {
+    max-width: none;
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.hidden {
+  display: none !important;
+}
+
+hr {
+  border: none;
+  border-top: 1px solid $grey2;
+}
+
+img {
+  max-width: 100%;
+}
+
+.overflow-hidden {
+  overflow: hidden;
+}
+
+header {
+  @media screen and (max-width: 767px) {
+    position: relative;
+  }
+
+  @include media-breakpoint-up(md) {
+    position: relative;
+    z-index: 999;
+  }
+}
+
+.section {
+  padding: 50px 0;
+
+  @include media-breakpoint-up(md) {
+    padding: 70px 0;
+  }
+
+  @include media-breakpoint-up(lg) {
+    padding: 100px 0;
+  }
+}
+
+.no-touch {
+  pointer-events: none;
+}

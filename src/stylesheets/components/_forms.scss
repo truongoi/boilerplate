@@ -1,0 +1,297 @@
+.form-item {
+  margin-top: 15px;
+
+  label {
+    font-size: 80%;
+  }
+
+  @include media-breakpoint-up(md) {
+    margin-top: 25px;
+
+    label {
+      font-size: 100%;
+    }
+  }
+
+  @include media-breakpoint-up(lg) {
+    margin-top: 35px;
+  }
+}
+
+.form-item-vehicle-registration {
+  label {
+    display: none;
+  }
+
+  .input-wrapper {
+    input {
+      background-color: #ffd400;
+      font-size: 48px;
+      line-height: 54px;
+      font-weight: bold;
+      color: $black;
+      text-align: center;
+      text-transform: uppercase;
+      border: none;
+      border-radius: 4px;
+      padding-top: 12px;
+    }
+  }
+}
+
+.select-wrapper {
+  position: relative;
+
+  &::after {
+    @include css-triangle(5px, $grey4, top);
+    @include absolute(top 50% right 10px);
+
+    margin-top: -4px;
+    pointer-events: none;
+  }
+
+  select {
+    background-color: $white;
+    border: 1px solid $grey2;
+    border-radius: 3px;
+    display: block;
+    width: 100%;
+    padding: 6px 25px 5px 7px;
+    font-size: 80%;
+
+    @extend %hide-select-arrow;
+  }
+
+  @include media-breakpoint-up(md) {
+    select {
+      padding: 7px 25px 7px 15px;
+      font-size: 100%;
+    }
+  }
+}
+
+.input-wrapper {
+  position: relative;
+
+  input {
+    outline: none;
+    background-color: $white;
+    border: 1px solid $grey2;
+    border-radius: 3px;
+    display: block;
+    width: 100%;
+    padding: 6px 8px 5px;
+    font-size: 80%;
+  }
+
+  button {
+    @include absolute(top 0 right 0);
+
+    width: 32px;
+    height: 32px;
+  }
+
+  &.input-icon {
+    input {
+      padding-right: 28px;
+    }
+  }
+
+  &.input-icon-background {
+    button {
+      background-color: $grey2;
+      color: $white;
+      border-top-right-radius: 3px;
+      border-bottom-right-radius: 3px;
+    }
+  }
+
+  @include media-breakpoint-up(md) {
+    input {
+      padding: 7px 15px 7px;
+      font-size: 100%;
+    }
+
+    button {
+      width: 40px;
+      height: 40px;
+    }
+
+    &.input-icon {
+      input {
+        padding-right: 35px;
+      }
+    }
+  }
+}
+
+.input-dropdown {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  max-height: 200px;
+  overflow-y: scroll;
+  background-color: $white;
+  border: 1px solid $grey2;
+  border-top: none;
+  z-index: 1;
+
+  label {
+    width: 100%;
+    margin: 0;
+    padding: 7px 15px;
+    cursor: pointer;
+    color: $black;
+
+    @include css-hover {
+      background-color: #dcdcdc;
+    }
+  }
+
+  input[type="radio"] {
+    visibility: hidden;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+}
+
+.textarea-wrapper {
+  textarea {
+    resize: none;
+    outline: none;
+    background-color: $white;
+    border: 1px solid $grey2;
+    border-radius: 3px;
+    display: block;
+    width: 100%;
+    padding: 6px 8px 5px;
+    font-size: 80%;
+  }
+}
+
+.counter-wrapper {
+  input {
+    margin: 0 5px;
+    padding: 6px 8px 5px;
+    outline: none;
+    background-color: $white;
+    border: 1px solid $grey2;
+    border-radius: 3px;
+    display: inline-block;
+    width: 50px;
+    font-size: 80%;
+    vertical-align: middle;
+    text-align: center;
+
+    /* Chrome, Safari, Edge, Opera */
+    &::-webkit-outer-spin-button,
+    &::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
+      margin: 0;
+    }
+
+    /* Firefox */
+    &[type=number] {
+      -moz-appearance: textfield;
+    }
+  }
+
+  @include media-breakpoint-up(md) {
+    input {
+      margin: 0 15px;
+      padding: 7px 15px 7px;
+      width: 80px;
+      font-size: 100%;
+    }
+  }
+}
+
+.counter-button {
+  outline: 0;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background-color: $red;
+  color: $white;
+  text-align: center;
+  line-height: 28px;
+  font-size: 28px;
+  vertical-align: middle;
+
+  @include media-breakpoint-up(md) {
+    width: 32px;
+    height: 32px;
+    line-height: 32px;
+  }
+}
+
+.checkbox-wrapper {
+  position: relative;
+
+  label {
+    position: relative;
+    margin: 0;
+    padding-left: 26px;
+    cursor: pointer;
+    font-size: 80%;
+
+    &::before {
+      content: '';
+      width: 18px;
+      height: 18px;
+      position: absolute;
+      top: -1px;
+      left: 0;
+      background: #fcfff4;
+      background: linear-gradient(to bottom, #fcfff4 0%, #f3f3f3 40%, #d0d0d0 100%);
+      border-radius: 4px;
+      border: 1px solid #a2a2a2;
+      box-shadow: inset 0 1px 1px white, 0 1px 3px rgba(0, 0, 0, 0.4);
+    }
+
+    &::after {
+      content: '';
+      width: 18px;
+      height: 16px;
+      position: absolute;
+      top: -1px;
+      left: 2px;
+      opacity: 0;
+      background: url('../images/icons/checkbox-arrow@2x.png') center no-repeat;
+      background-size: 18px 16px;
+    }
+
+    @include css-hover {
+      &::after {
+        opacity: 0.5;
+      }
+    }
+
+    @include media-breakpoint-up(md) {
+      font-size: 100%;
+
+      &::before,
+      &::after {
+        top: 1px;
+      }
+    }
+  }
+
+  input[type="checkbox"] {
+    visibility: hidden;
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    &:checked + label::after {
+      opacity: 1;
+    }
+  }
+}

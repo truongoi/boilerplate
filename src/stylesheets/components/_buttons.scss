@@ -1,0 +1,110 @@
+button {
+  outline: none;
+  border: none;
+  background: none;
+
+  &:focus {
+    outline: none;
+  }
+}
+
+.btn {
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  padding: 15px 25px;
+
+  + .btn {
+    margin-left: 15px;
+  }
+}
+
+.btn-primary {
+  color: $white;
+  font-size: 12px;
+  padding: 10px 15px;
+  letter-spacing: 1px;
+
+  + .btn-highlighted,
+  + .active {
+    background-color: $red-hover;
+  }
+
+  @include media-breakpoint-up(md) {
+    font-size: 14px;
+
+    @include css-hover {
+      background-color: $red-hover;
+    }
+  }
+}
+
+a.btn-primary {
+  color: $white;
+  font-size: 12px;
+}
+
+.btn-secondary {
+  background-color: transparent;
+  padding-left: 0;
+  padding-right: 0;
+
+  &.btn-highlighted,
+  &.active {
+    color: $red !important;
+    background-color: transparent !important;
+  }
+
+  @include media-breakpoint-up(md) {
+    @include css-hover {
+      color: $red !important;
+      background-color: transparent !important;
+    }
+  }
+}
+
+.btn-wrapper-flex {
+  display: flex;
+  justify-content: space-between;
+
+  .btn {
+    flex-basis: calc(50% - 5px);
+    margin-left: 0;
+    width: calc(50% - 5px);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &.no-wrap-mobile {
+    display: block;
+
+    .btn {
+      flex-basis: initial;
+      width: 100%;
+
+      + .btn {
+        margin-top: 15px;
+      }
+    }
+
+    @include media-breakpoint-up(md) {
+      display: flex;
+
+      .btn {
+        flex-basis: calc(50% - 5px);
+        width: calc(50% - 5px);
+
+        + .btn {
+          margin-top: 0;
+        }
+      }
+    }
+  }
+}
+
+.btn-full-width {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}

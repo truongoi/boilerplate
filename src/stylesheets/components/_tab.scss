@@ -1,0 +1,77 @@
+.tab-title {
+  &__item {
+    cursor: pointer;
+  }
+}
+
+.tab-content {
+  &__item {
+    display: none;
+
+    &.active {
+      display: block;
+    }
+  }
+}
+
+.css-tab-wrapper {
+  overflow-x: hidden; /* so we could easily hide the radio inputs */
+  margin-top: 32px;
+}
+
+.css-tab-wrapper [type="radio"] {
+  /* hiding the inputs */
+  display: none;
+}
+
+.css-tabs {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  align-items: stretch;
+
+  li {
+    flex: 1;
+    text-align: center;
+
+    label {
+      display: block;
+      margin-bottom: -1px;
+      padding: 12px 15px;
+      background: $grey3;
+      color: $white;
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: all 0.3s;
+
+      @include css-hover {
+        background-color: $grey4;
+      }
+    }
+  }
+}
+
+.css-tab-content {
+  display: none;
+  padding: 25px 0;
+}
+
+/* As we cannot replace the numbers with variables or calls to element properties, the number of this selector parts is our tab count limit */
+.css-tab-wrapper [type="radio"]:nth-of-type(1):checked ~ .css-tabs .css-tab:nth-of-type(1) label,
+.css-tab-wrapper [type="radio"]:nth-of-type(2):checked ~ .css-tabs .css-tab:nth-of-type(2) label,
+.css-tab-wrapper [type="radio"]:nth-of-type(3):checked ~ .css-tabs .css-tab:nth-of-type(3) label,
+.css-tab-wrapper [type="radio"]:nth-of-type(4):checked ~ .css-tabs .css-tab:nth-of-type(4) label,
+.css-tab-wrapper [type="radio"]:nth-of-type(5):checked ~ .css-tabs .css-tab:nth-of-type(5) label {
+  background-color: $red;
+}
+
+.css-tab-wrapper [type="radio"]:nth-of-type(1):checked ~ .css-tab-content:nth-of-type(1),
+.css-tab-wrapper [type="radio"]:nth-of-type(2):checked ~ .css-tab-content:nth-of-type(2),
+.css-tab-wrapper [type="radio"]:nth-of-type(3):checked ~ .css-tab-content:nth-of-type(3),
+.css-tab-wrapper [type="radio"]:nth-of-type(4):checked ~ .css-tab-content:nth-of-type(4),
+.css-tab-wrapper [type="radio"]:nth-of-type(5):checked ~ .css-tab-content:nth-of-type(5) {
+  display: block;
+}
