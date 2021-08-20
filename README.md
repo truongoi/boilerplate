@@ -1,5 +1,5 @@
 # HTML Boilerplate
-This is an front-end development starter kit revised from the no longer maintained [staticsiteboilerplate.com](staticsiteboilerplate.com)
+This is an front-end development starter kit revised from the no longer maintained [Static Site Boilerplate](https://staticsiteboilerplate.com)
 
 ### Installation
 
